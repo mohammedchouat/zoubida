@@ -1,3 +1,22 @@
 index:
     path: /
     controller: App\Controller\HomeController::index
+
+login:
+    path: /login
+    controller: App\Controller\LoginController::login
+    methods: [GET]
+
+
+register:
+    path: /register
+    controller: App\Controller\LoginController::register
+    methods: [GET]
+
+postregister:
+    path: /register
+    controller: App\Controller\LoginController::postregister
+    methods: [POST]
+
+
+
