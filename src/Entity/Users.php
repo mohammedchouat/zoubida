@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
@@ -28,6 +30,12 @@ class Users
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\Length(
+     * min = 8,
+     * max = 15,
+     * minMessage = "Entrez un mot de passe supérieur à 8 caractères",
+     * maxMessage = "Entrez un mot de passe inférieur à 15 caractères."
+     * )
      */
     private $password;
 
@@ -36,12 +44,12 @@ class Users
      */
     private $phone;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $created;
+    ///**
+    // * @ORM\Column(type="datetime")
+    // */
+    //private $created;
 
-    /**
+     /**
      * @ORM\Column(type="datetime")
      */
     private $updated;
@@ -104,21 +112,17 @@ class Users
         return $this->created;
     }
 
-    public function setCreated(\DateTimeInterface $created): self
-    {
-        $this->created = $created;
-
-        return $this;
-    }
+ 
 
     public function getUpdated(): ?\DateTimeInterface
     {
         return $this->updated;
     }
 
-    public function setUpdated(\DateTimeInterface $updated): self
+    public function setUpdated(): self
+
     {
-        $this->updated = $updated;
+        $this->updated = new \DateTime();
 
         return $this;
     }

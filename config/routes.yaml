@@ -5,13 +5,15 @@ index:
 login:
     path: /login
     controller: App\Controller\LoginController::login
-    methods: [GET]
+  
 
 
 register:
     path: /register
-    controller: App\Controller\LoginController::register
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     methods: [GET]
+    defaults:
+        template: static/signup.html.twig
 
 postregister:
     path: /register
